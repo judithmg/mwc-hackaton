@@ -1,0 +1,19 @@
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin box-shadow($shadow) {
+    box-shadow: $shadow;
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+}
+@mixin text-shadow($shadow) {
+    text-shadow: $shadow;
+    -webkit-text-shadow: $shadow;
+    -moz-text-shadow: $shadow;
+}
+
+$blackshadow: 0px 1px 1px #000000;
