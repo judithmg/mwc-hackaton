@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
+import '../../styles/Input.scss';
 
 interface Props {
-    className: string;
-    options: { name: string }[];
+    className?: string;
+    header: string;
+    options?: { name: string }[];
 }
 
-const InputCountry = ({ className, options }: Props): JSX.Element => {
+const InputCountry = ({ className, options, header, ...props }: Props): JSX.Element => {
     const [value, setValue] = useState('');
 
     return (
-        <>
-            <select className={`input-country ${className}`} onChange={(e) => setValue(e.target.value)}>
-                {options.map((el) => (
-                    <option key={el.name}>{el.name}</option>
-                ))}
+        <div className="input-container">
+            <h3 className="input-header">{header}</h3>
+            <select className={`input-country ${className}`} onChange={(e) => setValue(e.target.value)} {...props}>
+                {options && options.map((el) => <option key={el.name}>{el.name}</option>)}
             </select>
-        </>
+        </div>
     );
 };
 export default InputCountry;
