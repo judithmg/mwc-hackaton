@@ -1,50 +1,84 @@
-@import 'index.scss';
+@import "index.scss";
 
 * {
-    font-family: $Inter;
-    box-sizing: border-box;
+  font-family: $Inter;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 main {
-    @include flex(row, center, center);
-    height: 100vh;
+  @include flex(row, center, center);
+  height: 100vh;
 }
 
 aside {
-    background-image: linear-gradient(0deg, rgba(86, 155, 81, 0.9), rgba(86, 155, 81, 0.9)),
-        url(../assets/images/bg.png);
+  background-image: linear-gradient(
+      0deg,
+      rgba(86, 155, 81, 0.9),
+      rgba(86, 155, 81, 0.9)
+    ),
+    url(../assets/images/bg.png);
 
-    @include flex(column, center, flex-start);
-    height: 100vh;
-    background-size: cover;
-    color: white;
-    width: 40vw;
-    padding: 5rem;
+  @include flex(column, center, flex-start);
+  height: 100vh;
+  background-size: cover;
+  color: white;
+  width: 40vw;
+  padding: 5rem;
 
-    :nth-child(3) {
-        display: flex;
-        align-self: flex-end;
-    }
-    p {
-        margin: 4rem 0;
-        letter-spacing: 0.1rem;
-        line-height: 2rem;
-    }
+  :nth-child(3) {
+    display: flex;
+    align-self: flex-end;
+  }
+  p {
+    margin: 4rem 0;
+    letter-spacing: 0.1rem;
+    line-height: 2rem;
+  }
+}
+.container {
+  max-width: 650px;
 }
 section {
-    width: 60vw;
-    padding: 15rem;
+  width: 60vw;
+  padding: 10rem;
 }
 
 h3 {
-    color: $gray;
+  color: $gray;
 }
 
 .step-description {
-    color: $lightgray;
+  color: $lightgray;
+}
+
+.step-header {
+  @include flex(row, space-between, flex-start);
+  width: 100%;
+  .step-back {
+    color: $gray;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+@media screen and (max-width: 1200px) {
+  section {
+    padding: 5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  aside {
+    display: none;
+  }
+  section {
+    padding: 1rem;
+    width: 100%;
+  }
 }
