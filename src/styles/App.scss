@@ -63,17 +63,22 @@ h3 {
     color: $gray;
   }
 }
+.input-errors {
+  font-size: 0.7rem;
+  color: red;
+  min-height: 0.8rem;
+}
 
 button {
   cursor: pointer;
 }
-@media screen and (max-width: 1200px) {
+@media (max-width: 1200px) {
   section {
     padding: 5rem;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
   aside {
     display: none;
   }

@@ -1,7 +1,6 @@
 @import "index.scss";
 
-.input-number,
-.input-email {
+input {
   max-width: 600px;
   outline: none;
   border: 1px solid $gray;
