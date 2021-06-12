@@ -1,5 +1,50 @@
 @import 'index.scss';
 
-body {
+* {
     font-family: $Inter;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    @include flex(row, center, center);
+    height: 100vh;
+}
+
+aside {
+    background-image: linear-gradient(0deg, rgba(86, 155, 81, 0.9), rgba(86, 155, 81, 0.9)),
+        url(../assets/images/bg.png);
+
+    @include flex(column, center, flex-start);
+    height: 100vh;
+    background-size: cover;
+    color: white;
+    width: 40vw;
+    padding: 5rem;
+
+    :nth-child(3) {
+        display: flex;
+        align-self: flex-end;
+    }
+    p {
+        margin: 4rem 0;
+        letter-spacing: 0.1rem;
+        line-height: 2rem;
+    }
+}
+section {
+    width: 60vw;
+    padding: 15rem;
+}
+
+h3 {
+    color: $gray;
+}
+
+.step-description {
+    color: $lightgray;
 }
