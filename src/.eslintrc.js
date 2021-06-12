@@ -12,20 +12,11 @@ module.exports = {
             version: 'detect',
         },
     },
-    extends: [
-        'plugin:react/recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended',
-        'prettier',
-    ],
+    extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
     rules: {
         'object-curly-spacing': ['error', 'always'],
         'react/prop-types': 0,
-        'prettier/prettier': [
-            'error',
-            {
-                endOfLine: 'auto',
-            },
-        ],
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': ['error'],
     },
 };
