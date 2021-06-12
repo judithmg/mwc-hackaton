@@ -3,7 +3,15 @@ import InputNumber from "../components/Inputs/InputNumber";
 import InputCountry from "../components/Inputs/InputCountry";
 import Button from "../components/Steps/Button";
 import InputPhone from "../components/Inputs/InputPhone";
+import { Formik, Form } from "formik";
+
 import { Link } from "react-router-dom";
+import { phoneNumberSchema } from "../models/FormValidations";
+const initialValues = {
+  address: "",
+  phone: "",
+  country: "",
+};
 
 const Complete = (): JSX.Element => {
   return (
@@ -25,9 +33,36 @@ const Complete = (): JSX.Element => {
         Para poder revisar que se trata de una cuenta real, necesitamos la
         siguiente información
       </p>
-      <InputPhone header="Número de teléfono" />
-      <InputNumber header="Dirección" />
-      <InputCountry header="Código secreto" />
+      <Formik
+        initialValues={initialValues}
+        validationSchema={phoneNumberSchema}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <InputNumber
+              header="Número de teléfono"
+              placeholder="Introduce un número de teléfono válido"
+              type="text"
+              name="phone"
+              id="phone"
+            />{" "}
+            <p className="input-errors">
+              {errors.phone && touched.phone ? errors.phone : null}
+            </p>
+            <InputNumber
+              header="Dirección"
+              placeholder="Introduce una dirección postal"
+              type="text"
+              name="address"
+              id="address"
+            />
+            <InputCountry header="País de residencia" />
+          </Form>
+        )}
+      </Formik>
       <Button link="verify">Guardar y continuar</Button>
     </div>
   );

@@ -1,9 +1,15 @@
 import React from "react";
 import InputNumber from "../components/Inputs/InputNumber";
-import InputCountry from "../components/Inputs/InputCountry";
 import Button from "../components/Steps/Button";
-import InputPhone from "../components/Inputs/InputPhone";
 import { Link } from "react-router-dom";
+import { Formik, Form } from "formik";
+import { registerSchema } from "../models/FormValidations";
+
+const initialValues = {
+  name: "",
+  email: "",
+  password: "",
+};
 
 const Register = (): JSX.Element => {
   return (
@@ -22,9 +28,45 @@ const Register = (): JSX.Element => {
         Para poder revisar que se trata de una cuenta real, necesitamos la
         siguiente información
       </p>
-      <InputPhone header="Nombre completo" />
-      <InputNumber header="Correo electrónico" />
-      <InputCountry header="Contraseña" />
+      <Formik
+        initialValues={initialValues}
+        validationSchema={registerSchema}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <InputNumber
+              header="Nombre completo"
+              placeholder="Introduce tu nombre"
+              type="text"
+              name="name"
+              id="name"
+            />
+            <InputNumber
+              header="Correo electrónico"
+              placeholder="Introduce tu correo electrónico"
+              type="email"
+              name="email"
+              id="email"
+            />{" "}
+            <p className="input-errors">
+              {errors.email && touched.email ? errors.email : null}
+            </p>
+            <InputNumber
+              header="Contraseña"
+              placeholder="Introduce una contraseña segura"
+              type="password"
+              name="password"
+              id="password"
+            />{" "}
+            <p className="input-errors">
+              {errors.password && touched.password ? errors.password : null}
+            </p>
+          </Form>
+        )}
+      </Formik>
       <Button link="/complete">Guardar y continuar</Button>
     </div>
   );
