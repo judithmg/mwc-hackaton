@@ -1,0 +1,48 @@
+@import 'index.scss';
+
+.badge {
+    @include flex(row, center, space-around);
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+    padding: 1rem 0;
+    @include box-shadow(0px 2px 14px 1px #0000000f);
+}
+.badge-text {
+    font-size: 0.9rem;
+    .badge-title {
+        font-weight: 500;
+    }
+    .badge-info {
+        color: $gray;
+    }
+}
+
+.badge-icon {
+    margin: 2rem;
+    position: relative;
+    max-width: 50px;
+    max-height: 48px;
+    @include flex(row, center, center);
+    :nth-child(2) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.badge-next {
+    visibility: hidden;
+}
+
+.--developer {
+    border: 1px solid $green;
+    background-color: $badgegray;
+    @include box-shadow(0px 4px 14px 1px #0000000a);
+    .badge-next {
+        visibility: visible;
+        background-color: transparent;
+        border: none;
+    }
+}
