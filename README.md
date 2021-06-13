@@ -36,7 +36,7 @@ src/
 Site was deployed in Netlify. 
 [Click here to go to the deployed site](https://judith-mwc.netlify.app/)
 
-## Libraries used
+## Libraries used 📚
 - Axios
 - Formik
 - Yup
