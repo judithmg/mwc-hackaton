@@ -6,17 +6,25 @@ interface Props {
   className?: string;
   children: string;
   link?: string;
+  disabled?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button = ({
   className,
   children,
   link,
-  ...props
+  onClick,
+  disabled,
 }: Props): JSX.Element => {
   return (
     <Link style={{ textDecoration: "none", color: "inherit" }} to={link}>
-      <button {...props} type="button" className={`steps-btn ${className}`}>
+      <button
+        type="submit"
+        disabled={disabled}
+        onClick={onClick}
+        className={`steps-btn ${className}`}
+      >
         {children}
       </button>
     </Link>

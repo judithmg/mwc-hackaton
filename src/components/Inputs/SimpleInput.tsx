@@ -11,7 +11,7 @@ interface Props {
   name: string;
 }
 
-const InputNumber = ({
+const SimpleInput = ({
   className,
   placeholder,
   header,
@@ -32,4 +32,4 @@ const InputNumber = ({
     </>
   );
 };
-export default InputNumber;
+export default SimpleInput;

@@ -1,9 +1,4 @@
 import React from "react";
-
-import emppol from "../../assets/images/emp-pol.png";
-import fillpol from "../../assets/images/fill-pol.png";
-import user from "../../assets/icons/user.png";
-import briefcase from "../../assets/icons/briefcase.png";
 import { Link } from "react-router-dom";
 
 import "../../styles/Badge.scss";
@@ -21,13 +16,13 @@ const Badge = ({ title, children, developer }: Props): JSX.Element => {
         <div className="badge-icon">
           {developer ? (
             <>
-              <img alt="icon" src={fillpol} />
-              <img alt="icon" src={user} />{" "}
+              <img alt="polygon" src="https://i.imgur.com/hzh1lkm.png" />
+              <img alt="icon" src="https://i.imgur.com/6kMDwat.png" />
             </>
           ) : (
             <>
-              <img alt="icon" src={emppol} />
-              <img alt="icon" src={briefcase} />{" "}
+              <img alt="polygon" src="https://i.imgur.com/P9rFGtN.png" />
+              <img alt="icon" src="https://i.imgur.com/IEvDPlU.png" />
             </>
           )}
         </div>
