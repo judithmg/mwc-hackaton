@@ -1,9 +1,11 @@
 import React from "react";
-import InputNumber from "../components/Inputs/InputNumber";
-import Button from "../components/Steps/Button";
+import SimpleInput from "../components/Inputs/SimpleInput";
+import Button from "../components/Buttons/Simple";
 import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
+import useModal from "../hooks/useModal";
 import { creditCardSchema } from "../models/FormValidations";
+import Modal from "../components/Modals/Modal";
 
 const initialValues = {
   credit: "",
@@ -11,6 +13,8 @@ const initialValues = {
 };
 
 const Verify = (): JSX.Element => {
+  const { isShowing, toggle } = useModal();
+
   return (
     <div className="container">
       <div className="step-header">
@@ -18,10 +22,12 @@ const Verify = (): JSX.Element => {
           style={{ textDecoration: "none", color: "inherit" }}
           to="/complete"
         >
-          <p className="step-back">Volver</p>
+          <p className="step-back">
+            <span>&#xf053;</span>Volver
+          </p>
         </Link>
         <div>
-          <p className="step-num">Paso 03/03</p>
+          <p className="step-num">PASO 03/03</p>
           <p className="step-data">Verificación por tarjeta</p>
         </div>
       </div>
@@ -39,7 +45,7 @@ const Verify = (): JSX.Element => {
       >
         {({ errors, touched }) => (
           <Form>
-            <InputNumber
+            <SimpleInput
               header="Número de tarjeta"
               placeholder="Introduce tu tarjeta de crédito"
               type="text"
@@ -51,7 +57,7 @@ const Verify = (): JSX.Element => {
                 <>Número de tarjeta incorrecto</>
               ) : null}
             </p>
-            <InputNumber
+            <SimpleInput
               header="Código secreto"
               placeholder="Introduce tódigo secreto"
               type="text"
@@ -61,11 +67,23 @@ const Verify = (): JSX.Element => {
             <p className="input-errors">
               {errors.secret && touched.secret ? <>Código incorrecto </> : null}
             </p>
+            <Button
+              onClick={toggle}
+              disabled={
+                errors.credit ||
+                errors.secret ||
+                !touched.secret ||
+                !touched.credit
+                  ? true
+                  : false
+              }
+            >
+              Crear cuenta
+            </Button>
+            <Modal isShowing={isShowing} hide={toggle}></Modal>
           </Form>
         )}
       </Formik>
-
-      <Button>Crear cuenta</Button>
     </div>
   );
 };

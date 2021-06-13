@@ -1,8 +1,7 @@
 import React from "react";
-import InputNumber from "../components/Inputs/InputNumber";
+import SimpleInput from "../components/Inputs/SimpleInput";
 import InputCountry from "../components/Inputs/InputCountry";
-import Button from "../components/Steps/Button";
-import InputPhone from "../components/Inputs/InputPhone";
+import Button from "../components/Buttons/Simple";
 import { Formik, Form } from "formik";
 
 import { Link } from "react-router-dom";
@@ -21,10 +20,12 @@ const Complete = (): JSX.Element => {
           style={{ textDecoration: "none", color: "inherit" }}
           to="/register"
         >
-          <p className="step-back">Volver</p>
+          <p className="step-back">
+            <span>&#xf053;</span>Volver
+          </p>
         </Link>
         <div>
-          <p className="step-num">Paso 02/03</p>
+          <p className="step-num">PASO 02/03</p>
           <p className="step-data">Localización</p>
         </div>
       </div>
@@ -42,7 +43,7 @@ const Complete = (): JSX.Element => {
       >
         {({ errors, touched }) => (
           <Form>
-            <InputNumber
+            <SimpleInput
               header="Número de teléfono"
               placeholder="Introduce un número de teléfono válido"
               type="text"
@@ -52,18 +53,25 @@ const Complete = (): JSX.Element => {
             <p className="input-errors">
               {errors.phone && touched.phone ? errors.phone : null}
             </p>
-            <InputNumber
+            <SimpleInput
               header="Dirección"
               placeholder="Introduce una dirección postal"
               type="text"
               name="address"
               id="address"
             />
+            <p className="input-errors"></p>
             <InputCountry header="País de residencia" />
+            <p className="input-errors"></p>
+            <Button
+              link="/verify"
+              disabled={errors.phone || !touched.phone ? true : false}
+            >
+              Guardar y continuar
+            </Button>
           </Form>
         )}
       </Formik>
-      <Button link="verify">Guardar y continuar</Button>
     </div>
   );
 };

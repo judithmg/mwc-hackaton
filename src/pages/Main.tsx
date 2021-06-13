@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import vekt from "../assets/images/vekt.png";
 import qmarks from "../assets/images/qmarks.png";
+import ToggleComp from "../components/Contexts/Toggle";
 
 const Main = (): JSX.Element => {
   return (
@@ -22,6 +23,7 @@ const Main = (): JSX.Element => {
         <img src={vekt} alt="vector" />
       </aside>
       <section>
+        <ToggleComp />
         <Router>
           <Switch>
             <Route path="/register" component={Register}></Route>

@@ -1,8 +1,9 @@
 import React from "react";
-import InputNumber from "../components/Inputs/InputNumber";
-import Button from "../components/Steps/Button";
+import SimpleInput from "../components/Inputs/SimpleInput";
+import Button from "../components/Buttons/Simple";
+import GoogleBtn from "../components/Buttons/GoogleBtn";
 import { Link } from "react-router-dom";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field } from "formik";
 import { registerSchema } from "../models/FormValidations";
 
 const initialValues = {
@@ -16,10 +17,12 @@ const Register = (): JSX.Element => {
     <div className="container">
       <div className="step-header">
         <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
-          <p className="step-back">Volver</p>
+          <p className="step-back">
+            <span>&#xf053;</span>Volver
+          </p>
         </Link>
         <div>
-          <p className="step-num">Paso 01/03</p>
+          <p className="step-num">PASO 01/03</p>
           <p className="step-data">Personal Info.</p>
         </div>
       </div>
@@ -37,37 +40,55 @@ const Register = (): JSX.Element => {
       >
         {({ errors, touched }) => (
           <Form>
-            <InputNumber
-              header="Nombre completo"
+            <SimpleInput
+              header="Nombre completo *"
               placeholder="Introduce tu nombre"
               type="text"
               name="name"
               id="name"
             />
-            <InputNumber
-              header="Correo electrónico"
+            <p className="input-errors"></p>
+            <SimpleInput
+              header="Correo electrónico *"
               placeholder="Introduce tu correo electrónico"
               type="email"
               name="email"
               id="email"
             />{" "}
             <p className="input-errors">
-              {errors.email && touched.email ? errors.email : null}
+              {errors.email || !touched.email ? errors.email : null}
             </p>
-            <InputNumber
-              header="Contraseña"
+            <SimpleInput
+              header="Contraseña *"
               placeholder="Introduce una contraseña segura"
               type="password"
               name="password"
               id="password"
             />{" "}
             <p className="input-errors">
-              {errors.password && touched.password ? errors.password : null}
+              {errors.password || !touched.password ? errors.password : null}
             </p>
+            <label>
+              <Field type="checkbox" name="toggle" />
+              Acepto los térmicos y condiciones
+            </label>
+            <Button
+              link="/complete"
+              disabled={
+                errors.email ||
+                errors.password ||
+                !touched.password ||
+                !touched.email
+                  ? true
+                  : false
+              }
+            >
+              Registrar cuenta
+            </Button>
           </Form>
         )}
       </Formik>
-      <Button link="/complete">Guardar y continuar</Button>
+      <GoogleBtn>Regístrate con Google</GoogleBtn>
     </div>
   );
 };

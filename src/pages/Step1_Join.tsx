@@ -1,6 +1,5 @@
 import React from "react";
 import Badge from "../components/Badges/Badge";
-import Register from "./Step2_Register";
 
 const Join = (): JSX.Element => {
   return (
