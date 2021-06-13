@@ -6,7 +6,7 @@
 This repository contains code for the project build for MWC Nuwe's Hackaton. This is a **React** project in **Typescript** build with `create-react-app`, that allows the user to register on a mock website. Forms were constructed using `Formik`. 
 
 ## Folder structure
-
+```
 public/
 ├───images
 src/
@@ -24,7 +24,7 @@ src/
 ├───models
 ├───pages
 └───styles
-
+```
 ## Live preview
 
 Site was deployed in Netlify. 
