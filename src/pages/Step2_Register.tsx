@@ -89,6 +89,9 @@ const Register = (): JSX.Element => {
         )}
       </Formik>
       <GoogleBtn>Regístrate con Google</GoogleBtn>
+      <p className="step-secure">
+        <span>&#xf023;</span>Tu información es segura
+      </p>
     </div>
   );
 };
