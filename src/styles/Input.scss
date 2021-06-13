@@ -1,6 +1,7 @@
 @import "index.scss";
 
-input {
+input,
+select {
   max-width: 600px;
   outline: none;
   border: 1px solid $gray;
