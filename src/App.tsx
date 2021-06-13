@@ -1,7 +1,9 @@
 import React from "react";
+import Main from "./pages/Main";
+import "./styles/App.scss";
 
-function App() {
-  return <div className="App">Hello World</div>;
-}
+const App = (): JSX.Element => {
+  return <Main />;
+};
 
 export default App;

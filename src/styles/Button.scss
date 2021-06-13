@@ -1,7 +1,32 @@
-@import 'index.scss';
+@import "index.scss";
+
+.steps-btn,
+.google-btn {
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 6px;
+  border: none;
+  padding: 1rem 0;
+}
 
 .steps-btn {
-    background-color: $green;
-    color: $white;
-    border-radius: 6px;
+  color: $white;
+  background-color: $green;
+  &:hover {
+    @include box-shadow(0px 4px 10px 3px #0302021c);
+    background-color: $lightgreen;
+  }
+}
+.google-btn {
+  @include flex(row, center, center);
+  color: $black;
+  font-weight: 500;
+  background-color: $white;
+  &:hover {
+    @include box-shadow(0px 4px 10px 3px #0302021c);
+  }
+  img {
+    margin-right: 1rem;
+  }
 }
