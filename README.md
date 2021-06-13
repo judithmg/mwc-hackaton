@@ -55,5 +55,7 @@ To run the project, use
 npm start
 ```
 
+Project will run in http://localhost:3000 if available, otherwise check your terminal.
+
 ## Author 👩‍💻
 - Judith Martínez (judithmg)
